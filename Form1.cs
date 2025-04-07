@@ -18,7 +18,7 @@ namespace GRAFICO
         List<double> xVals = new List<double>();
         List<double> yVals = new List<double>();
         
-        //TESTE GIT kinecs-NOTE2
+        //TESTE GIT kinecs-NOTE1
         public Random rnd = new Random();
         double tick = 0.0;
         double DataTime = 100.0; //Tempo de visualização do gráfico

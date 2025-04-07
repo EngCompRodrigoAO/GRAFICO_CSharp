@@ -57,7 +57,7 @@ namespace GRAFICO
 
         #region Contructor
         //Contrutor da Class
-        public LineGraph(Chart chart1, double xAxisMin, double xAxisMax, double xAxisInterval, double yAxisMin, double yAxisMax, double yAxisInterval, int lineWidth, int numMinorXGrid, int numMinorYGrid, Color lineColor)
+        public LineGraph(Chart chart1, double xAxisMin, double xAxisMax, double xAxisInterval, bool xMajorActive, double yAxisMin, double yAxisMax, double yAxisInterval, bool yMajorActive, int lineWidth, int numMinorXGrid, int numMinorYGrid, Color lineColor)
         {
             this.xAxisMin = xAxisMin;
             this.xAxisMax = xAxisMax;
@@ -77,11 +77,13 @@ namespace GRAFICO
             chart1.ChartAreas[0].AxisX.Minimum = xAxisMin;
             chart1.ChartAreas[0].AxisX.Maximum = xAxisMax;
             chart1.ChartAreas[0].AxisX.Interval = xAxisInterval;
+            chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = xMajorActive; // Habilita a grade maior do eixo X
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.DarkGray;
 
             chart1.ChartAreas[0].AxisY.Minimum = yAxisMin;
             chart1.ChartAreas[0].AxisY.Maximum = yAxisMax;
             chart1.ChartAreas[0].AxisY.Interval = yAxisInterval;
+            chart1.ChartAreas[0].AxisY.MajorGrid.Enabled = yMajorActive; // Habilita a grade maior do eixo Y
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.DarkGray;
 
             //zoom graph
@@ -99,18 +101,33 @@ namespace GRAFICO
             chart1.ChartAreas[0].AxisY.Interval = yAxisInterval;
             //chart1.ChartAreas[0].Axes[0].MajorGrid.Interval = 500;
 
+            if (numMinorXGrid == 0)
+            {
+                chart1.ChartAreas[0].AxisX.MinorGrid.Enabled = false; //Desabilita a grade menor do eixo X
+            }
+            else
+            {
+                chart1.ChartAreas[0].AxisX.MinorGrid.Enabled = true; //Habilita a grade menor do eixo X
+                chart1.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.DarkGray; //Define a cor da grade menor do eixo X
+                chart1.ChartAreas[0].AxisX.MinorGrid.Interval = xMinorInt; //Define o intervalo da grade menor do eixo X
+                chart1.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash; //Define o estilo da grade menor do eixo X
+            }
 
-            chart1.ChartAreas[0].AxisX.MinorGrid.Enabled = true; //Habilita a grade menor do eixo X
-            chart1.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.DarkGray; //Define a cor da grade menor do eixo X
-            chart1.ChartAreas[0].AxisX.MinorGrid.Interval = xMinorInt; //Define o intervalo da grade menor do eixo X
-            chart1.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash; //Define o estilo da grade menor do eixo X
+            if (numMinorYGrid == 0)
+            {
+                chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = false; //Desabilita a grade menor do eixo Y
+            }
+            else
+            {
+                chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = true; //Habilita a grade menor do eixo Y
+                chart1.ChartAreas[0].AxisY.MinorGrid.LineColor = Color.DarkGray; //Define a cor da grade menor do eixo Y
+                chart1.ChartAreas[0].AxisY.MinorGrid.Interval = yMinorInt; //Define o intervalo da grade menor do eixo Y
+                chart1.ChartAreas[0].AxisY.MinorGrid.LineDashStyle = ChartDashStyle.Dash; //Define o estilo da grade menor do eixo Y
+            }
 
-
-            chart1.ChartAreas[0].AxisY.MinorGrid.Enabled = true; //Habilita a grade menor do eixo Y
-            chart1.ChartAreas[0].AxisY.MinorGrid.LineColor = Color.DarkGray; //Define a cor da grade menor do eixo Y
-            chart1.ChartAreas[0].AxisY.MinorGrid.Interval = yMinorInt; //Define o intervalo da grade menor do eixo Y
-            chart1.ChartAreas[0].AxisY.MinorGrid.LineDashStyle = ChartDashStyle.Dash; //Define o estilo da grade menor do eixo Y
-
+            chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White; //Cor dos rótulos do eixo X
+            chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White; //Cor dos rótulos do eixo Y
+            chart1.BackColor = Color.Black; //Cor de fundo do gráfico
             chart1.ChartAreas[0].BackColor = Color.Black;
             chart1.ChartAreas[0].BorderColor = Color.White;
 
@@ -129,21 +146,34 @@ namespace GRAFICO
 
         #region Methods
 
-        public void CreateStripLine(Chart chart1, double striplineyValue, double stripLineWidth, Color stripLinecolor, int stripLineColorAlpha)
+        public void CreateStripLine(Chart chart1, double striplineyValue, double stripLineWidth, Color stripLinecolor, int stripLineColorAlpha, bool AtivaStripLine)
         {
             this.striplineyValue = striplineyValue;
             this.stripLinecolor = stripLinecolor;
             this.stripLineWidth = stripLineWidth;
             this.stripLineColorAlpha = stripLineColorAlpha;
 
-            StripLine stripLine1 = new StripLine();
 
-            stripLine1.IntervalOffset = striplineyValue;
-            stripLine1.StripWidth = stripLineWidth;
-            stripLine1.BackColor = Color.FromArgb(stripLineColorAlpha, stripLinecolor);
-            stripLine1.BorderColor = Color.Black;
-            stripLine1.BorderDashStyle = ChartDashStyle.Solid;
-            chart1.ChartAreas[0].AxisY.StripLines.Add(stripLine1);
+            if(AtivaStripLine == true)
+            {
+                chart1.ChartAreas[0].AxisY.StripLines.Clear(); // Limpa as StripLines existentes
+
+                StripLine stripLine1 = new StripLine();
+
+                stripLine1.IntervalOffset = striplineyValue;
+                stripLine1.StripWidth = stripLineWidth;
+                stripLine1.BackColor = Color.FromArgb(stripLineColorAlpha, stripLinecolor);
+                stripLine1.BorderColor = Color.Black;
+                stripLine1.BorderDashStyle = ChartDashStyle.Solid;
+                chart1.ChartAreas[0].AxisY.StripLines.Add(stripLine1);
+            }
+            else
+            {
+                chart1.ChartAreas[0].AxisY.StripLines.Clear(); // Limpa as StripLines existentes
+            }
+            
+
+
         }
 
 

@@ -21,7 +21,7 @@ namespace GRAFICO
         public Random rnd = new Random();
         double tick = 0.0;
         double DataTime = 100.0; //Tempo de visualização do gráfico
-
+        Color COR_STRIPLINE, COR_LINHA;
 
         public Form1()
         {
@@ -29,10 +29,10 @@ namespace GRAFICO
             // Aula 3 - Aula Gráfico scrolling and Data Binding
 
             //configura o gráfico
-            LineGraph graph1 = new LineGraph(chart1, 0, DataTime, 1, 0, 30, 15, 1, 0, 0, Color.Red);
+            LineGraph graph1 = new LineGraph(chart1, 0, DataTime, 1, true, 0, 30, 15, true, 1, 0, 0, Color.Red);
 
             //Configura a StripLine
-            graph1.CreateStripLine(chart1, 10, 10, Color.BlueViolet, 125);
+            graph1.CreateStripLine(chart1, 10, 10, Color.BlueViolet, 125, true);
         }
 
 
@@ -78,8 +78,8 @@ namespace GRAFICO
                 tick = 0;
                 timer1.Interval = Convert.ToInt16(TXT_ATUALIZA.Text);
 
-                LineGraph graph1 = new LineGraph(chart1, Convert.ToDouble(TXT_X_MIN.Text), DataTime, Convert.ToDouble(TXT_X_INTERVALO.Text), Convert.ToDouble(TXT_Y_MIN.Text), Convert.ToDouble(TXT_Y_MAX.Text), Convert.ToDouble(TXT_Y_INTERVALO.Text), Convert.ToInt16(TXT_LINHA_ESPESSURA.Text), Convert.ToInt16(TXT_MINOR_X.Text), Convert.ToInt16(TXT_MINOR_Y.Text), Color.Aqua);
-                
+                LineGraph graph1 = new LineGraph(chart1, Convert.ToDouble(TXT_X_MIN.Text), DataTime, Convert.ToDouble(TXT_X_INTERVALO.Text), CHK_GRADE_X.Checked, Convert.ToDouble(TXT_Y_MIN.Text), Convert.ToDouble(TXT_Y_MAX.Text), Convert.ToDouble(TXT_Y_INTERVALO.Text), CHK_GRADE_Y.Checked, Convert.ToInt16(TXT_LINHA_ESPESSURA.Text), Convert.ToInt16(TXT_MINOR_X.Text), Convert.ToInt16(TXT_MINOR_Y.Text), COR_LINHA);
+                graph1.CreateStripLine(chart1, Convert.ToDouble(TXT_STRIPLINE_MIN.Text), (Convert.ToDouble(TXT_STRIPLINE_MAX.Text) - Convert.ToDouble(TXT_STRIPLINE_MIN.Text)), COR_STRIPLINE, Convert.ToInt16(TXT_STRIPLINE_OPACIDADE.Text), CHK_STRIPLINE.Checked); // Cria a StripLine
                 timer1.Enabled = true;
 
             }
@@ -87,6 +87,18 @@ namespace GRAFICO
             {
 
             }
+        }
+
+        private void LBL_COR_LINHA_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            COR_LINHA = colorDialog1.Color;
+        }
+
+        private void LBL_COR_STRIPLINE_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            COR_STRIPLINE = colorDialog1.Color;
         }
 
         private void chart1_DoubleClick(object sender, EventArgs e)

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TXT_X_MIN = new System.Windows.Forms.TextBox();
@@ -57,6 +57,18 @@
             this.TXT_ATUALIZA = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.CHK_GRADE_X = new System.Windows.Forms.CheckBox();
+            this.CHK_GRADE_Y = new System.Windows.Forms.CheckBox();
+            this.CHK_STRIPLINE = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TXT_STRIPLINE_MIN = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.TXT_STRIPLINE_MAX = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TXT_STRIPLINE_OPACIDADE = new System.Windows.Forms.TextBox();
+            this.LBL_COR_LINHA = new System.Windows.Forms.Label();
+            this.LBL_COR_STRIPLINE = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,16 +77,16 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(53, 85);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(719, 312);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -117,7 +129,7 @@
             this.TXT_X_MAX.Name = "TXT_X_MAX";
             this.TXT_X_MAX.Size = new System.Drawing.Size(27, 20);
             this.TXT_X_MAX.TabIndex = 3;
-            this.TXT_X_MAX.Text = "50";
+            this.TXT_X_MAX.Text = "100";
             // 
             // label6
             // 
@@ -267,6 +279,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 224);
             this.label11.Name = "label11";
@@ -276,6 +289,7 @@
             // 
             // label12
             // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(370, 400);
             this.label12.Name = "label12";
@@ -283,11 +297,123 @@
             this.label12.TabIndex = 27;
             this.label12.Text = "label12";
             // 
+            // CHK_GRADE_X
+            // 
+            this.CHK_GRADE_X.AutoSize = true;
+            this.CHK_GRADE_X.Location = new System.Drawing.Point(305, 4);
+            this.CHK_GRADE_X.Name = "CHK_GRADE_X";
+            this.CHK_GRADE_X.Size = new System.Drawing.Size(74, 17);
+            this.CHK_GRADE_X.TabIndex = 28;
+            this.CHK_GRADE_X.Text = "GRADE X";
+            this.CHK_GRADE_X.UseVisualStyleBackColor = true;
+            // 
+            // CHK_GRADE_Y
+            // 
+            this.CHK_GRADE_Y.AutoSize = true;
+            this.CHK_GRADE_Y.Location = new System.Drawing.Point(305, 32);
+            this.CHK_GRADE_Y.Name = "CHK_GRADE_Y";
+            this.CHK_GRADE_Y.Size = new System.Drawing.Size(74, 17);
+            this.CHK_GRADE_Y.TabIndex = 29;
+            this.CHK_GRADE_Y.Text = "GRADE Y";
+            this.CHK_GRADE_Y.UseVisualStyleBackColor = true;
+            // 
+            // CHK_STRIPLINE
+            // 
+            this.CHK_STRIPLINE.AutoSize = true;
+            this.CHK_STRIPLINE.Location = new System.Drawing.Point(305, 57);
+            this.CHK_STRIPLINE.Name = "CHK_STRIPLINE";
+            this.CHK_STRIPLINE.Size = new System.Drawing.Size(82, 17);
+            this.CHK_STRIPLINE.TabIndex = 30;
+            this.CHK_STRIPLINE.Text = "STRIPLINE";
+            this.CHK_STRIPLINE.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(385, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(89, 13);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "STRIPLINE MIN:";
+            // 
+            // TXT_STRIPLINE_MIN
+            // 
+            this.TXT_STRIPLINE_MIN.Location = new System.Drawing.Point(484, 2);
+            this.TXT_STRIPLINE_MIN.Name = "TXT_STRIPLINE_MIN";
+            this.TXT_STRIPLINE_MIN.Size = new System.Drawing.Size(27, 20);
+            this.TXT_STRIPLINE_MIN.TabIndex = 31;
+            this.TXT_STRIPLINE_MIN.Text = "1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(385, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(92, 13);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "STRIPLINE MAX:";
+            // 
+            // TXT_STRIPLINE_MAX
+            // 
+            this.TXT_STRIPLINE_MAX.Location = new System.Drawing.Point(484, 28);
+            this.TXT_STRIPLINE_MAX.Name = "TXT_STRIPLINE_MAX";
+            this.TXT_STRIPLINE_MAX.Size = new System.Drawing.Size(27, 20);
+            this.TXT_STRIPLINE_MAX.TabIndex = 33;
+            this.TXT_STRIPLINE_MAX.Text = "2";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(385, 58);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(98, 13);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "STRIPLINE OPAC:";
+            // 
+            // TXT_STRIPLINE_OPACIDADE
+            // 
+            this.TXT_STRIPLINE_OPACIDADE.Location = new System.Drawing.Point(484, 55);
+            this.TXT_STRIPLINE_OPACIDADE.Name = "TXT_STRIPLINE_OPACIDADE";
+            this.TXT_STRIPLINE_OPACIDADE.Size = new System.Drawing.Size(27, 20);
+            this.TXT_STRIPLINE_OPACIDADE.TabIndex = 35;
+            this.TXT_STRIPLINE_OPACIDADE.Text = "125";
+            // 
+            // LBL_COR_LINHA
+            // 
+            this.LBL_COR_LINHA.AutoSize = true;
+            this.LBL_COR_LINHA.Location = new System.Drawing.Point(514, 33);
+            this.LBL_COR_LINHA.Name = "LBL_COR_LINHA";
+            this.LBL_COR_LINHA.Size = new System.Drawing.Size(65, 13);
+            this.LBL_COR_LINHA.TabIndex = 37;
+            this.LBL_COR_LINHA.Text = "COR LINHA";
+            this.LBL_COR_LINHA.Click += new System.EventHandler(this.LBL_COR_LINHA_Click);
+            // 
+            // LBL_COR_STRIPLINE
+            // 
+            this.LBL_COR_STRIPLINE.AutoSize = true;
+            this.LBL_COR_STRIPLINE.Location = new System.Drawing.Point(514, 58);
+            this.LBL_COR_STRIPLINE.Name = "LBL_COR_STRIPLINE";
+            this.LBL_COR_STRIPLINE.Size = new System.Drawing.Size(89, 13);
+            this.LBL_COR_STRIPLINE.TabIndex = 38;
+            this.LBL_COR_STRIPLINE.Text = "COR STRIPLINE";
+            this.LBL_COR_STRIPLINE.Click += new System.EventHandler(this.LBL_COR_STRIPLINE_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 422);
+            this.Controls.Add(this.LBL_COR_STRIPLINE);
+            this.Controls.Add(this.LBL_COR_LINHA);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.TXT_STRIPLINE_OPACIDADE);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.TXT_STRIPLINE_MAX);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.TXT_STRIPLINE_MIN);
+            this.Controls.Add(this.CHK_STRIPLINE);
+            this.Controls.Add(this.CHK_GRADE_Y);
+            this.Controls.Add(this.CHK_GRADE_X);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.TXT_ATUALIZA);
@@ -347,6 +473,18 @@
         private System.Windows.Forms.TextBox TXT_ATUALIZA;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox CHK_GRADE_X;
+        private System.Windows.Forms.CheckBox CHK_GRADE_Y;
+        private System.Windows.Forms.CheckBox CHK_STRIPLINE;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox TXT_STRIPLINE_MIN;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox TXT_STRIPLINE_MAX;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox TXT_STRIPLINE_OPACIDADE;
+        private System.Windows.Forms.Label LBL_COR_LINHA;
+        private System.Windows.Forms.Label LBL_COR_STRIPLINE;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 
